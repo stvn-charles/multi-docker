@@ -10,18 +10,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-      - run: docker build -t stevencharles/react-test -f ./client/Dockerfile.dev ./client
-      - run: docker run -e CI=true stevencharles/react-test npm test
+      - run: docker build -t stvncharles/react-test -f ./client/Dockerfile.dev ./client
+      - run: docker run -e CI=true stvncharles/react-test npm test
  
-      - run: docker build -t stevencharles/multi-client-10-14 ./client
-      - run: docker build -t stevencharles/multi-nginx-10-14 ./nginx
-      - run: docker build -t stevencharles/multi-server-10-14 ./server
-      - run: docker build -t stevencharles/multi-worker-10-14 ./worker
+      - run: docker build -t stvncharles/multi-client-10-14 ./client
+      - run: docker build -t stvncharles/multi-nginx-10-14 ./nginx
+      - run: docker build -t stvncharles/multi-server-10-14 ./server
+      - run: docker build -t stvncharles/multi-worker-10-14 ./worker
  
-      - run: docker push stevencharles/multi-client-10-14
-      - run: docker push stevencharles/multi-nginx-10-14
-      - run: docker push stevencharles/multi-server-10-14
-      - run: docker push stevencharles/multi-worker-10-14
+      - run: docker push stvncharles/multi-client-10-14
+      - run: docker push stvncharles/multi-nginx-10-14
+      - run: docker push stvncharles/multi-server-10-14
+      - run: docker push stvncharles/multi-worker-10-14
  
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
